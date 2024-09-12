@@ -1,5 +1,4 @@
 class RecintosZoo {
-
     constructor() {
         this.recintos = [
             { numero: 1, bioma: 'savana', tamanhoTotal: 10, ocupacaoAtual: 3, animais: ['MACACO'] },
@@ -40,7 +39,7 @@ class RecintosZoo {
     calculaEspacoNecessario(recinto, infoAnimal, tamanhoNecessario) {
         let espacoOcupado = tamanhoNecessario;
 
-        // Se houver animais diferentes, adiciona 1 ao espaço ocupado
+        // Se houver animais diferentes no recinto, adiciona 1 ao espaço ocupado
         if (recinto.animais.length > 0 && !recinto.animais.includes(infoAnimal)) {
             espacoOcupado += 1;
         }
@@ -60,13 +59,18 @@ class RecintosZoo {
 
             const espacoDisponivel = recinto.tamanhoTotal - recinto.ocupacaoAtual;
 
-            if (infoAnimal.carnivoro && recinto.animais.length > 0 && !recinto.animais.includes(animal)) {
-                return false;
+            // Verificar se o recinto é adequado para o tipo de animal
+            if (infoAnimal.carnivoro) {
+                if (recinto.animais.length > 0 && !recinto.animais.includes(animal)) {
+                    return false; // Impedir carnívoros diferentes ou alocar com herbívoros
+                }
+            } else {
+                if (recinto.animais.some(a => this.animais[a].carnivoro)) {
+                    return false; // Não permitir herbívoros com carnívoros
+                }
             }
 
-            const espacoOcupado = this.calculaEspacoNecessario(recinto, animal, tamanhoNecessario);
-
-            return espacoDisponivel >= espacoOcupado;
+            return espacoDisponivel >= tamanhoNecessario;
         });
     }
 
