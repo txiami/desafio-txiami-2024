@@ -1,4 +1,7 @@
-## LOGICA UTILIZADA PARA RESOLUÇÃO DO DESAFIO 
+![Recinto](Recinto.png)
+# RECINTOS DO ZOO
+
+## LOGICA UTILIZADA PARA RESOLUÇÃO DO DESAFIO
 
 A lógica geral do código é dividir o problema em partes menores e gerenciáveis, utilizando a POO para organizar o código em classes e métodos com responsabilidades claras. A estrutura de dados é projetada para representar recintos e animais de maneira que facilite a validação e alocação conforme as regras do desafio.
 
@@ -166,23 +169,3 @@ npm test
 ```
 
 Para saber mais consulte a [Documentação do Jest](https://jestjs.io/pt-BR/docs/getting-started).
-
-### VALIDANDO A ENTREGA
-Para garantir que seu desafio vai ser considerado entregue, revise os seguintes pontos:
-
-#### GIT
-O repositório deve ser **público** e ter o **nome** e **branch** indicados na seção `ENTREGANDO O DESAFIO`.
-
-Para verificar que o repositório é público, deslogue-se do github e tente ver o código. Se conseguir, nós também conseguimos! Lembrando que vamos usar o link para o usuário informado durante o cadastro na Gupy. Veja [como alterar a visibilidade](https://docs.github.com/pt/repositories/managing-your-repositorys-settings-and-features/managing-repository-settings/setting-repository-visibility#changing-a-repositorys-visibility).
-
-#### CÓDIGO
-A solução deve ser entregue em **javascript** e a **estrutura de pastas e arquivos** deve seguir o indicado na seção `O CÓDIGO`.
-
-O **export** da classe deve ser mantido da seguinte maneira para compatibilidade com o arquivo de testes:
-```js
-export { RecintosZoo as RecintosZoo };
-```
-
-Se todos os passos forem seguidos corretamente, você terá um repositório como o da figura abaixo (lembrando que é permitido criar mais arquivos), onde `seuUsername` é o seu usuário do GitHub, que você informou no questionário da Gupy.
-
-![Exemplo de repositório](https://startdbstorage.blob.core.windows.net/filecontainer/imagem-estrutura.png)
