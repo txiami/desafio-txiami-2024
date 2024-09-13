@@ -1,15 +1,68 @@
-# RECINTOS DO ZOO
+## LOGICA UTILIZADA PARA RESOLUÇÃO DO DESAFIO 
 
-## COMO BAIXAR O CÓDIGO E SUBMETER MINHA SOLUÇÃO?
-Para completar a etapa do desafio você terá que baixar a estrutura do código aqui na Azure, resolver o desafio usando Javascript e entregá-lo no repositório no seu github.
+A lógica geral do código é dividir o problema em partes menores e gerenciáveis, utilizando a POO para organizar o código em classes e métodos com responsabilidades claras. A estrutura de dados é projetada para representar recintos e animais de maneira que facilite a validação e alocação conforme as regras do desafio.
 
-### BAIXANDO A ESTRUTURA
-Para baixar a estrutura no formato zip, basta clicar neste [link](https://dev.azure.com/db-tecnologia/99dbf7ce-dadd-40d3-b827-e1648cb6a262/_apis/git/repositories/877e7dfb-78ea-465e-bd88-9dbf83120933/items?path=/&versionDescriptor%5BversionOptions%5D=0&versionDescriptor%5BversionType%5D=0&versionDescriptor%5Bversion%5D=main&resolveLfs=true&%24format=zip&api-version=5.0&download=true).
+Recintos são armazenados em um array de objetos, permitindo fácil acesso e manipulação.
+Animais são armazenados em um objeto, facilitando a validação e busca de informações.
+Métodos na classe RecintosZoo implementam a lógica de validação, cálculo e filtragem, mantendo o código modular e organizado.
 
-### ENTREGANDO O DESAFIO
-Após resolver o desafio e validá-lo com os testes (mais detalhes nos tópicos abaixo), você terá que criar um repositório **público** no [Github](https://github.com/) com o **nome** de `desafio-seuUsername-2024` (substitua "seuUsername" pelo seu usuário do GitHub) e colocar o código na **branch** `main`.
+### ONDE UTILIZEI UMA ESTRUTURA DE DADOS QUE CONSISTIA EM:
 
-Se você ainda não teve contato com essa ferramenta, não tem problema. Separamos um material para lhe ajudar nessa etapa: [Como usar Git e Github na prática](https://www.youtube.com/watch?v=UBAX-13g8OM).
+
+
+Recintos:
+
+- São representados como objetos em um array de recintos (this.recintos).
+- Cada recinto possui as seguintes propriedades:
+
+
+numero: Identificador único do recinto.
+
+bioma: Tipo de bioma do recinto (savana, floresta, rio, etc.).
+
+tamanhoTotal: Tamanho total do recinto.
+
+ocupacaoAtual: Número de espaços atualmente ocupados.
+
+animais: Lista de animais presentes no recinto.
+
+|------------|---------|----------------------|
+
+
+Animais:
+
+- São representados como um objeto (this.animais), onde cada chave é o nome da espécie e o valor é um objeto com informações sobre a espécie.
+- Cada animal tem as seguintes propriedades:
+
+tamanho: Espaço que o animal ocupa.
+
+biomas: Lista de biomas onde o animal pode viver.
+
+carnivoro: Booleano que indica se o animal é carnívoro.
+
+
+### LOGICA DE ENCAPSULAMENTO
+
+Decidi utilizar a estrutura de encapsulamento para alocar animais nos recintos.
+
+Classe RecintosZoo:
+
+- Construtor : Inicializa os dados dos recintos e animais. Este é o ponto de partida para definir a estrutura de dados do zoológico.
+
+- Método validaAnimal(animal) : Verifica se o animal fornecido é válido, consultando o objeto this.animais.
+
+- Método validaQuantidade(quantidade) : Verifica se a quantidade fornecida é válida (deve ser um número inteiro positivo).
+
+- Método verificaBiomaAdequado(biomasRecinto, biomasAnimal) : Verifica se o bioma do recinto é adequado para o animal com base nos biomas que o animal pode habitar.
+
+- Método calculaEspacoNecessario(recinto, infoAnimal, tamanhoNecessario) : Calcula o espaço necessário para alocar um número específico de animais, considerando o espaço adicional se houver múltiplas espécies no recinto.
+
+- Método filtraRecintosViaveis(animal, quantidade) : Filtra os recintos que são viáveis para alocar o animal na quantidade fornecida, levando em consideração as regras do desafio.
+
+- Método mapearRecintosViaveis(recintos, animal, quantidade) : Mapeia os recintos viáveis e formata a saída para mostrar o espaço livre e total disponível em cada recinto.
+
+- Método analisaRecintos(animal, quantidade) : Coordena a validação do animal e da quantidade, filtra os recintos viáveis e formata a saída final. Este método é o ponto de entrada para a lógica principal de alocação.
+
 
 ## O DESAFIO
 Olá! Você foi contratado para ajudar na organização de um zoológico.
